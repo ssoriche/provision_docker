@@ -18,6 +18,7 @@
     volumes: "{{ provision_docker_volumes|default(omit) }}"
     volumes_from: "{{ provision_docker_volumes_from|default(omit) }}"
     pull: "{{ hostvars[item].pull|default(omit) }}"
+    capabilities: "SYS_ADMIN"
   with_items: "{{ provision_docker_inventory_group }}"
 
 - name: Get IP of container
