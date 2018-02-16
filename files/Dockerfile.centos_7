@@ -33,6 +33,8 @@ RUN systemctl enable sshd.service
 ADD dbus.service /etc/systemd/system/dbus.service
 RUN systemctl enable dbus.service
 
+RUN sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
+
 VOLUME [ "/sys/fs/cgroup" ]
 VOLUME ["/run"]
 
