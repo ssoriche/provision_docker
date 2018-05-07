@@ -1,6 +1,7 @@
 - name: Bring up list of hosts
   docker_container:
     name: "{{ item['name'] }}"
+    hostname: "{{ item.['hostname'] | default(item['name']) }}"
     image: "{{ item.image|default(provision_docker_image_default) }}"
     privileged: "{{ provision_docker_privileged }}"
     state: "{{ provision_docker_state }}"
